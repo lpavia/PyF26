@@ -1,13 +1,12 @@
 import { useEffect, useRef } from 'react';
 import GuessRow from './GuessRow';
-import { type GuessRecord, type SecretNumber } from '../game/logic';
+import { type GuessRecord } from '../game/logic';
 
 interface GuessListProps {
   records: GuessRecord[];
-  secret: SecretNumber;
 }
 
-export default function GuessList({ records, secret }: GuessListProps) {
+export default function GuessList({ records }: GuessListProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,7 +24,7 @@ export default function GuessList({ records, secret }: GuessListProps) {
   return (
     <div className="flex flex-col gap-3 overflow-y-auto pr-1">
       {records.map((record, i) => (
-        <GuessRow key={i} record={record} secret={secret} />
+        <GuessRow key={i} record={record} />
       ))}
       <div ref={bottomRef} />
     </div>
