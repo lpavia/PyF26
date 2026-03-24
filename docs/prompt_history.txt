@@ -1,7 +1,27 @@
-The file pyf.js contains
+The file pyf.js contains a basic Javascript code of a number game called "Punto y Fama", this is a code 
+I used to play against ohter friends using a pencil and paper.
 
-Rules of the game:
--The machine generates a 4 digit random number at the begining of the gmae
--The final number must contain only unique digits
+Basic Rules of the game:
+-The machine generates a secret 4 digit random number at the begining of the gmae
+-The choosen number must contain only unique digits
 -The player has 10 chances to guess the secret number
-- 
+-For every chance, the player will give a 4 digit number, trying to guess the secret number within the total number of chances
+-The machine returns the result in this way: A string of "F" and "." where "F" is returned in case the digit is in the correct position,
+"." is returned when the digit is not in the correct position. The position of "F" and "." in the returned string should not reflect the 
+position of the digit, meaning, The "F"s are shown first in the string, The "." are shown after the "F"s.
+-Example
+ Secret Number: 1234
+ Player number: 4259
+ Result: "F."
+ -The game ends whenever the secret number is guessed correctly or the maximum number of chances is raised.
+
+
+
+Goals:
+-Create a modern web version of this game using TypeScript and any modern Weg GUI framework of your choice
+-The Web GUI should be fast, responsive and
+-The game must be playable in both desktop web browsers and mobile web browser without loosing funcionalities
+-The initial URL points to the game and goes directly to play mode
+
+
+
