@@ -17,7 +17,7 @@ export default function GuessList({ records, secret }: GuessListProps) {
   if (records.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-slate-500 text-sm">
-        Make your first guess!
+        ¡Haz tu primer intento!
       </div>
     );
   }
