@@ -1,0 +1,7 @@
+The file pyf.js contains
+
+Rules of the game:
+-The machine generates a 4 digit random number at the begining of the gmae
+-The final number must contain only unique digits
+-The player has 10 chances to guess the secret number
+- 
