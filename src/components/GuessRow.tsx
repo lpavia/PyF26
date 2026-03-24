@@ -2,18 +2,20 @@ import { type GuessRecord } from '../game/logic';
 
 interface GuessRowProps {
   record: GuessRecord;
+  index: number;
 }
 
-export default function GuessRow({ record }: GuessRowProps) {
+export default function GuessRow({ record, index }: GuessRowProps) {
   const chips = record.result.split('');
 
   return (
-    <div className="flex items-center gap-3 animate-slide-in">
+    <div className="flex items-center gap-2 animate-slide-in">
+      <span className="text-xs font-bold text-slate-500 w-4 text-right shrink-0">{index}</span>
       <div className="flex gap-2">
         {record.guess.split('').map((digit, i) => (
           <div
             key={i}
-            className="w-12 h-12 rounded-xl flex items-center justify-center text-xl font-bold bg-slate-600 text-slate-300"
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-base font-bold bg-slate-600 text-slate-300"
           >
             {digit}
           </div>
@@ -27,7 +29,7 @@ export default function GuessRow({ record }: GuessRowProps) {
           chips.map((char, i) => (
             <span
               key={i}
-              className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-extrabold shadow
+              className={`w-6 h-6 rounded-md flex items-center justify-center text-xs font-extrabold shadow
                 ${char === 'F'
                   ? 'bg-fuchsia-500 text-white'
                   : 'bg-amber-400 text-amber-900'

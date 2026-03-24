@@ -22,9 +22,9 @@ export default function GuessList({ records }: GuessListProps) {
   }
 
   return (
-    <div className="flex flex-col gap-3 overflow-y-auto pr-1">
+    <div className="flex flex-col gap-2 overflow-y-auto h-full pr-1">
       {records.map((record, i) => (
-        <GuessRow key={i} record={record} />
+        <GuessRow key={i} index={i + 1} record={record} />
       ))}
       <div ref={bottomRef} />
     </div>

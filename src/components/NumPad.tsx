@@ -21,7 +21,7 @@ export default function NumPad({ onDigit, onBackspace, onSubmit, disabled, fille
   };
 
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid grid-cols-3 gap-1.5">
       {ROWS.flat().map((key) => {
         const isSubmit = key === '✓';
         const isBack = key === '⌫';
@@ -33,7 +33,7 @@ export default function NumPad({ onDigit, onBackspace, onSubmit, disabled, fille
             onClick={() => handleClick(key)}
             disabled={isDisabled}
             className={`
-              w-20 h-14 rounded-xl text-xl font-bold active:scale-95 transition-all select-none
+              w-16 h-10 rounded-xl text-base font-bold active:scale-95 transition-all select-none
               disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100
               ${isSubmit
                 ? 'bg-fuchsia-500 hover:bg-fuchsia-400 text-white'
