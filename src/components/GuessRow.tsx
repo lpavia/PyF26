@@ -5,6 +5,8 @@ interface GuessRowProps {
 }
 
 export default function GuessRow({ record }: GuessRowProps) {
+  const chips = record.result.split('');
+
   return (
     <div className="flex items-center gap-3 animate-slide-in">
       <div className="flex gap-2">
@@ -17,8 +19,24 @@ export default function GuessRow({ record }: GuessRowProps) {
           </div>
         ))}
       </div>
-      <div className="text-lg font-mono font-bold text-fuchsia-300 min-w-[4rem]">
-        {record.result || '–'}
+
+      <div className="flex gap-1.5 min-w-[7rem] flex-wrap">
+        {chips.length === 0 ? (
+          <span className="text-slate-600 text-lg font-bold">—</span>
+        ) : (
+          chips.map((char, i) => (
+            <span
+              key={i}
+              className={`w-8 h-8 rounded-lg flex items-center justify-center text-sm font-extrabold shadow
+                ${char === 'F'
+                  ? 'bg-fuchsia-500 text-white'
+                  : 'bg-amber-400 text-amber-900'
+                }`}
+            >
+              {char === 'F' ? 'F' : '•'}
+            </span>
+          ))
+        )}
       </div>
     </div>
   );
