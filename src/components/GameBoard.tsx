@@ -34,6 +34,15 @@ export default function GameBoard() {
       </div>
 
       <GameOverOverlay status={status} secret={secret} onReset={resetGame} />
+
+      <a
+        href="https://github.com/lpavia"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-2 left-4 text-[10px] text-indigo-600 hover:text-indigo-400 transition-colors"
+      >
+        @lpavia
+      </a>
     </div>
   );
 }
