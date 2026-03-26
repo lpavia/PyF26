@@ -17,6 +17,7 @@ interface UseGameReturn {
   records: GuessRecord[];
   status: GameStatus;
   maxAttempts: number;
+  resetCount: number;
   submitGuess: (guess: GuessValue) => void;
   resetGame: () => void;
 }
@@ -24,6 +25,7 @@ interface UseGameReturn {
 export function useGame(): UseGameReturn {
   const [secret, setSecret] = useState<SecretNumber>(() => generateSecret());
   const [records, setRecords] = useState<GuessRecord[]>([]);
+  const [resetCount, setResetCount] = useState(0);
 
   const status = deriveStatus(records, MAX_ATTEMPTS);
 
@@ -37,7 +39,8 @@ export function useGame(): UseGameReturn {
   function resetGame() {
     setSecret(generateSecret());
     setRecords([]);
+    setResetCount(c => c + 1);
   }
 
-  return { secret, records, status, maxAttempts: MAX_ATTEMPTS, submitGuess, resetGame };
+  return { secret, records, status, maxAttempts: MAX_ATTEMPTS, resetCount, submitGuess, resetGame };
 }

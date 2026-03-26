@@ -5,7 +5,7 @@ import GuessInput from './GuessInput';
 import GameOverOverlay from './GameOverOverlay';
 
 export default function GameBoard() {
-  const { secret, records, status, maxAttempts, submitGuess, resetGame } = useGame();
+  const { secret, records, status, maxAttempts, resetCount, submitGuess, resetGame } = useGame();
 
   return (
     <div className="relative w-full max-w-md bg-indigo-900 rounded-3xl shadow-2xl p-6 flex flex-col gap-4 h-[700px]">
@@ -30,7 +30,7 @@ export default function GameBoard() {
       </div>
 
       <div className="border-t border-indigo-700 pt-4">
-        <GuessInput status={status} onSubmit={submitGuess} />
+        <GuessInput key={resetCount} status={status} onSubmit={submitGuess} />
       </div>
 
       <GameOverOverlay status={status} secret={secret} onReset={resetGame} />
