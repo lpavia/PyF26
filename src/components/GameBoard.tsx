@@ -17,23 +17,13 @@ export default function GameBoard() {
           <h1 className="text-3xl font-bold text-white tracking-wide">Punto y Fama</h1>
           <p className="text-indigo-300 text-sm mt-1">Adivina el número de 4 dígitos</p>
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setShowHelp(true)}
-            className="w-8 h-8 rounded-full bg-indigo-700 hover:bg-indigo-600 active:scale-95
-              transition-all text-indigo-300 font-bold text-sm"
-            aria-label="Instrucciones"
-          >
-            ?
-          </button>
-          <button
-            onClick={resetGame}
-            className="bg-indigo-700 hover:bg-indigo-600 active:scale-95 transition-all
-              rounded-2xl px-4 py-2 text-sm font-semibold text-indigo-200"
-          >
-            Nueva partida
-          </button>
-        </div>
+        <button
+          onClick={resetGame}
+          className="bg-indigo-700 hover:bg-indigo-600 active:scale-95 transition-all
+            rounded-2xl px-4 py-2 text-sm font-semibold text-indigo-200 shrink-0"
+        >
+          Nueva partida
+        </button>
       </div>
 
       <AttemptsBar total={maxAttempts} used={records.length} />
@@ -57,6 +47,15 @@ export default function GameBoard() {
       >
         @lpavia
       </a>
+
+      <button
+        onClick={() => setShowHelp(true)}
+        className="absolute bottom-1.5 right-4 w-7 h-7 rounded-full bg-indigo-700 hover:bg-indigo-600
+          active:scale-95 transition-all text-indigo-300 font-bold text-sm"
+        aria-label="Instrucciones"
+      >
+        ?
+      </button>
     </div>
   );
 }
