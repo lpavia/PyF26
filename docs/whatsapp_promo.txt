@@ -1,0 +1,19 @@
+🎮 ¿Puedes adivinar el número secreto?
+
+Te reto a jugar Punto y Fama, el clásico juego de lógica y deducción que seguro jugaste de niño con papel y lápiz… ¡ahora en tu celular! 🧠🔥
+
+👉 https://lpavia.github.io/PyF26/
+
+---
+
+¿Cómo se juega?
+
+🔢 Adivina un número secreto de 4 dígitos (sin dígitos repetidos).
+💡 Tienes solo 10 intentos.
+🟣 F = dígito correcto en la posición correcta.
+🟡 • = dígito correcto pero en la posición equivocada.
+🚫 Sin pista = ese dígito no está en el número.
+
+¡Es gratis, sin instalación y se juega directo desde el navegador! 📱
+
+¿Cuántos intentos te tomó? ¡Cuéntame! 👇

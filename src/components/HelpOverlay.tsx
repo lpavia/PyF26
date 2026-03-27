@@ -5,11 +5,11 @@ interface HelpOverlayProps {
 export default function HelpOverlay({ onClose }: HelpOverlayProps) {
   return (
     <div
-      className="absolute inset-0 flex items-center justify-center rounded-3xl animate-scale-in backdrop-blur-sm z-10"
+      className="absolute inset-0 flex items-center justify-center rounded-3xl animate-scale-in bg-black/60 backdrop-blur-sm z-10"
       onClick={onClose}
     >
       <div
-        className="bg-indigo-800 border-2 border-indigo-400 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 mx-4"
+        className="bg-slate-800 border-2 border-fuchsia-500 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 mx-4"
         onClick={e => e.stopPropagation()}
       >
         <h2 className="text-xl font-bold text-white text-center">¿Cómo se juega?</h2>
