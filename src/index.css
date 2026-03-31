@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  background-color: #1e1b4b; /* indigo-950 — fills mobile safe-area zones */
+}
+
 @layer utilities {
   .animate-slide-in {
     animation: slide-in 0.25s ease-out both;
