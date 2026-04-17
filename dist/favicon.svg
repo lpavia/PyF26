@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background: indigo-900 rounded square -->
+  <rect width="32" height="32" rx="7" fill="#312e81"/>
+  <!-- F: fuchsia-500 — matching the Fama chips in the game -->
+  <text x="2" y="25"
+    font-family="Arial Black, Impact, sans-serif"
+    font-size="26"
+    font-weight="900"
+    fill="#d946ef">F</text>
+  <!-- dot: amber-400 circle — matching the Punto chips in the game -->
+  <circle cx="27" cy="24" r="4" fill="#fbbf24"/>
+</svg>
