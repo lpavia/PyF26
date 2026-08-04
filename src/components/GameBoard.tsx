@@ -21,17 +21,14 @@ export default function GameBoard() {
           <h1 className="text-3xl font-bold text-indigo-950 dark:text-white tracking-wide">Punto y Fama</h1>
           <p className="text-indigo-500 dark:text-indigo-300 text-sm mt-1">Adivina el número de 4 dígitos</p>
         </div>
-        <div className="flex items-center gap-2 shrink-0">
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
-          <button
-            onClick={resetGame}
-            className="bg-indigo-100 hover:bg-indigo-200 dark:bg-indigo-700 dark:hover:bg-indigo-600
-              active:scale-95 transition-all rounded-2xl px-4 py-2 text-sm font-semibold
-              text-indigo-700 dark:text-indigo-200"
-          >
-            Nueva partida
-          </button>
-        </div>
+        <button
+          onClick={resetGame}
+          className="bg-indigo-100 hover:bg-indigo-200 dark:bg-indigo-700 dark:hover:bg-indigo-600
+            active:scale-95 transition-all rounded-2xl px-4 py-2 text-sm font-semibold
+            text-indigo-700 dark:text-indigo-200 shrink-0"
+        >
+          Nuevo juego
+        </button>
       </div>
 
       <AttemptsBar total={maxAttempts} used={records.length} />
@@ -57,15 +54,18 @@ export default function GameBoard() {
         @lpavia
       </a>
 
-      <button
-        onClick={() => setShowHelp(true)}
-        className="absolute bottom-1.5 right-4 w-7 h-7 rounded-full bg-indigo-100 hover:bg-indigo-200
-          dark:bg-indigo-700 dark:hover:bg-indigo-600
-          active:scale-95 transition-all text-indigo-700 dark:text-indigo-300 font-bold text-sm"
-        aria-label="Instrucciones"
-      >
-        ?
-      </button>
+      <div className="absolute bottom-1.5 right-4 flex items-center gap-2">
+        <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <button
+          onClick={() => setShowHelp(true)}
+          className="w-7 h-7 rounded-full bg-indigo-100 hover:bg-indigo-200
+            dark:bg-indigo-700 dark:hover:bg-indigo-600
+            active:scale-95 transition-all text-indigo-700 dark:text-indigo-300 font-bold text-sm"
+          aria-label="Instrucciones"
+        >
+          ?
+        </button>
+      </div>
     </div>
   );
 }
