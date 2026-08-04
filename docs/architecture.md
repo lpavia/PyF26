@@ -1,7 +1,8 @@
 # PyF26 — Architecture Overview
 
-> **Stack:** React 18 · TypeScript 5.6 · Vite 6 · Tailwind CSS 3
+> **Stack:** React 18 · TypeScript 5.6 · Vite 6 · Tailwind CSS 3 · vite-plugin-pwa 1.3
 > **Hosting:** GitHub Pages · **CI/CD:** GitHub Actions · **Analytics:** Google Analytics 4
+> **Delivery:** installable PWA — offline-capable, standalone window
 
 ---
 
@@ -31,6 +32,9 @@ flowchart LR
         HTML["index.html\n(entry point)"]
         APP["React SPA\n(JS bundle)"]
         CSS["Tailwind styles\n(CSS bundle)"]
+        SW["sw.js — Workbox\nprecache + navigation fallback"]
+        MF["manifest.webmanifest\nname · icons · standalone"]
+        INST(["📲 Installed app\nWindows · macOS · Linux · mobile"])
     end
 
     GA(["📊 Google Analytics 4\nG-144NJM1RWB"])
@@ -41,6 +45,11 @@ flowchart LR
     PAGES -->|"HTTPS — static assets"| HTML
     HTML --> APP
     HTML --> CSS
+    HTML -->|"registerSW.js"| SW
+    HTML --> MF
+    SW -->|"serves cached shell\nwhen offline"| APP
+    MF --> INST
+    SW --> INST
     HTML -.->|"gtag.js beacon"| GA
 ```
 
@@ -150,18 +159,28 @@ flowchart TD
 
 ```
 PyF26/
-├── index.html                  ← entry, GA tag, theme-color, viewport-fit
-├── vite.config.ts              ← base: '/PyF26/', react plugin
+├── index.html                  ← entry, GA tag, theme-color, viewport-fit, PWA meta
+├── vite.config.ts              ← base: '/PyF26/', react plugin, VitePWA (manifest + SW)
 ├── tailwind.config.js          ← content glob: src/**/*.{ts,tsx}
 ├── postcss.config.js
 ├── tsconfig.json / tsconfig.app.json / tsconfig.node.json
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml          ← CI/CD: build → GitHub Pages
+├── scripts/
+│   └── generate-icons.mjs      ← `npm run icons` — rasterises the PWA PNGs
+├── public/
+│   ├── favicon.svg             ← brand mark (source of the icon design)
+│   ├── apple-touch-icon.png    ← 180² — iOS / macOS Safari "Add to Dock"
+│   ├── og.png                  ← social preview (not precached)
+│   └── icons/
+│       ├── icon-192.png        ← manifest, purpose "any"
+│       ├── icon-512.png        ← manifest, purpose "any"
+│       └── icon-maskable-512.png ← manifest, purpose "maskable" (Android)
 └── src/
     ├── main.tsx                ← ReactDOM.createRoot
-    ├── App.tsx                 ← root layout (bg-indigo-950)
-    ├── index.css               ← Tailwind directives + keyframes
+    ├── App.tsx                 ← root layout (bg-indigo-950, p-safe)
+    ├── index.css               ← Tailwind directives + keyframes + .p-safe
     ├── vite-env.d.ts
     ├── game/
     │   └── logic.ts            ← pure TS: generateSecret, scoreGuess, deriveStatus…
@@ -190,3 +209,7 @@ PyF26/
 | `key={resetCount}` on GuessInput | Forces full remount on reset, clearing digit state without prop drilling |
 | `base: '/PyF26/'` in Vite | Required for correct asset paths on GitHub Pages subdirectory hosting |
 | `viewport-fit=cover` + `theme-color` | Fills mobile safe-area zones (status bar, home indicator) with app background |
+| Workbox `generateSW` precache | The whole app is ~180 KB of static files — precaching everything makes it fully offline with no runtime caching strategy to reason about |
+| `skipWaiting` + `clientsClaim`, no reload prompt | A new deploy installs silently and applies on the next launch. Never reloads mid-game (which would lose the current board), and needs no update-banner UI |
+| Relative `src` on manifest icons | Resolved against the manifest URL, so the icon paths stay correct without repeating the `/PyF26/` base |
+| `.p-safe` instead of `p-4` on the root | Standalone windows draw under the notch/home indicator; `max(1rem, env(...))` is byte-identical to `p-4` wherever the insets are 0 |

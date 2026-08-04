@@ -5,9 +5,23 @@
 html,
 body {
   background-color: #1e1b4b; /* indigo-950 — fills mobile safe-area zones */
+  color-scheme: dark; /* keeps scrollbars/native UI dark in the installed app */
+  /* Installed PWAs have no browser chrome, so rubber-band scrolling and
+     pull-to-refresh only ever look like glitches. */
+  overscroll-behavior: none;
 }
 
 @layer utilities {
+  /* Standalone windows can extend under a notch or a home indicator
+     (viewport-fit=cover + apple-mobile-web-app-status-bar-style). Falls back
+     to a plain 1rem — identical to the previous `p-4` — everywhere else. */
+  .p-safe {
+    padding-top: max(1rem, env(safe-area-inset-top));
+    padding-right: max(1rem, env(safe-area-inset-right));
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    padding-left: max(1rem, env(safe-area-inset-left));
+  }
+
   .animate-slide-in {
     animation: slide-in 0.25s ease-out both;
   }
