@@ -73,8 +73,8 @@ export default function GuessInput({ status, onSubmit }: GuessInputProps) {
           <div
             key={i}
             className={`w-12 h-12 rounded-xl border-4 flex items-center justify-center
-              text-xl font-bold text-white bg-indigo-800 transition-colors
-              ${i === highlightIndex && !disabled ? 'border-fuchsia-400' : 'border-indigo-400'}`}
+              text-xl font-bold text-indigo-950 dark:text-white bg-indigo-50 dark:bg-indigo-800 transition-colors
+              ${i === highlightIndex && !disabled ? 'border-fuchsia-500 dark:border-fuchsia-400' : 'border-indigo-300 dark:border-indigo-400'}`}
           >
             {digit}
           </div>

@@ -10,7 +10,7 @@ export default function AttemptsBar({ total, used }: AttemptsBarProps) {
         <div
           key={i}
           className={`w-5 h-5 rounded-full transition-colors duration-300 ${
-            i < used ? 'bg-fuchsia-500' : 'bg-slate-700'
+            i < used ? 'bg-fuchsia-500' : 'bg-slate-300 dark:bg-slate-700'
           }`}
         />
       ))}

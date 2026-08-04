@@ -2,13 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark; /* keeps scrollbars/native UI dark in the installed app */
+}
+
 html,
 body {
-  background-color: #1e1b4b; /* indigo-950 — fills mobile safe-area zones */
-  color-scheme: dark; /* keeps scrollbars/native UI dark in the installed app */
+  background-color: #e0e7ff; /* indigo-100 — light theme, fills mobile safe-area zones */
+  transition: background-color 0.3s ease;
   /* Installed PWAs have no browser chrome, so rubber-band scrolling and
      pull-to-refresh only ever look like glitches. */
   overscroll-behavior: none;
+}
+
+html.dark,
+html.dark body {
+  background-color: #1e1b4b; /* indigo-950 — dark theme, fills mobile safe-area zones */
 }
 
 @layer utilities {

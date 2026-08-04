@@ -9,17 +9,17 @@ export default function HelpOverlay({ onClose }: HelpOverlayProps) {
       onClick={onClose}
     >
       <div
-        className="bg-slate-800 border-2 border-fuchsia-500 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 mx-4"
+        className="bg-white dark:bg-slate-800 border-2 border-fuchsia-500 rounded-2xl p-6 shadow-2xl flex flex-col gap-4 mx-4"
         onClick={e => e.stopPropagation()}
       >
-        <h2 className="text-xl font-bold text-white text-center">¿Cómo se juega?</h2>
+        <h2 className="text-xl font-bold text-indigo-950 dark:text-white text-center">¿Cómo se juega?</h2>
 
-        <ul className="text-slate-200 text-sm flex flex-col gap-2">
+        <ul className="text-slate-600 dark:text-slate-200 text-sm flex flex-col gap-2">
           <li>
-            El juego genera un número secreto de <span className="text-white font-semibold">4 dígitos sin repetir</span>.
+            El juego genera un número secreto de <span className="text-indigo-950 dark:text-white font-semibold">4 dígitos sin repetir</span>.
           </li>
           <li>
-            Tienes <span className="text-white font-semibold">10 intentos</span> para adivinarlo.
+            Tienes <span className="text-indigo-950 dark:text-white font-semibold">10 intentos</span> para adivinarlo.
           </li>
           <li>
             Después de cada intento recibes pistas:
@@ -35,7 +35,7 @@ export default function HelpOverlay({ onClose }: HelpOverlayProps) {
             </div>
           </li>
           <li>
-            Si un dígito no aparece como <span className="text-fuchsia-400 font-semibold">F</span> ni como <span className="text-amber-400 font-semibold">•</span>, no está en el número.
+            Si un dígito no aparece como <span className="text-fuchsia-600 dark:text-fuchsia-400 font-semibold">F</span> ni como <span className="text-amber-600 dark:text-amber-400 font-semibold">•</span>, no está en el número.
           </li>
         </ul>
 

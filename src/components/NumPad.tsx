@@ -38,8 +38,8 @@ export default function NumPad({ onDigit, onBackspace, onSubmit, disabled, fille
               ${isSubmit
                 ? 'bg-fuchsia-500 hover:bg-fuchsia-400 text-white'
                 : isBack
-                  ? 'bg-slate-600 hover:bg-slate-500 text-white'
-                  : 'bg-indigo-700 hover:bg-indigo-600 text-white'
+                  ? 'bg-slate-300 hover:bg-slate-400 text-slate-800 dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-white'
+                  : 'bg-indigo-100 hover:bg-indigo-200 text-indigo-900 dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:text-white'
               }
             `}
           >

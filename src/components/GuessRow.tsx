@@ -10,12 +10,13 @@ export default function GuessRow({ record, index }: GuessRowProps) {
 
   return (
     <div className="flex items-center gap-2 animate-slide-in">
-      <span className="text-xs font-bold text-slate-500 w-4 text-right shrink-0">{index}</span>
+      <span className="text-xs font-bold text-slate-400 dark:text-slate-500 w-4 text-right shrink-0">{index}</span>
       <div className="flex gap-2">
         {record.guess.split('').map((digit, i) => (
           <div
             key={i}
-            className="w-10 h-10 rounded-xl flex items-center justify-center text-base font-bold bg-slate-600 text-slate-300"
+            className="w-10 h-10 rounded-xl flex items-center justify-center text-base font-bold
+              bg-slate-200 text-slate-700 dark:bg-slate-600 dark:text-slate-300"
           >
             {digit}
           </div>
@@ -24,7 +25,7 @@ export default function GuessRow({ record, index }: GuessRowProps) {
 
       <div className="flex gap-1.5 min-w-[7rem] flex-wrap">
         {chips.length === 0 ? (
-          <span className="text-slate-600 text-lg font-bold">—</span>
+          <span className="text-slate-400 dark:text-slate-600 text-lg font-bold">—</span>
         ) : (
           chips.map((char, i) => (
             <span
